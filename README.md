@@ -1,7 +1,8 @@
-mapadeocorrencias
-=================
+#Mapa de Ocorrências Policiais#
 
-Mapa de Ocorrências Policiais. 
+Mapa de Ocorrências Policiais com estatísticas por bairro, por tipo de crime, etc.
+
+Este projeto não é do tipo "crowdsourcing" de dados e sim para visualização de dados vindos dos órgãos de segurança.
 
 Exemplo em: http://jgs.mapadeocorrencias.com.br/
 
@@ -18,17 +19,18 @@ Justin Palmer.
 Este projeto é um "spin-off" de outro SIG maior que não foi para frente por motivos que não vem ao caso.
 Como separei o código e refiz algumas partes, podem aparecer alguns bugs, ainda estou testando tudo.
 
+##Licença##
 
-Requerimentos
--------------
+GPL para a parte em Python. A parte visual que permanece por enquanto igual, tem a mesma licença original do "portlandcrime"
+
+##Requerimentos##
 
 - Django
 - GeoDjango (incluído na distribuição do Django)
 - Postgre/PostGIS (está rodando com a versão 1.5, mas com certeza funciona com a 2 também)
 
 
-Instalação
-----------
+##Instalação##
 
 1) É necessário ter previamente instalado o Postgre/PostGIS.
 
@@ -52,8 +54,7 @@ Executar o python manage.py syncdb para criar todas as tabelas
 em seu Apache. Na raíz do projeto você encontrará um arquivo wsgi.py para lhe auxiliar na configuração
 
 
-Alimentação dos Dados
----------------------
+##Alimentação dos Dados##
 
 A importação dos dados deverá ser feito com algum script de importação. Estou providenciando um exemplo.
 
