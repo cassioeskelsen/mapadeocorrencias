@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% block selectedBairro %} selected{% endblock %}
+{% block title %}{{ bairro.nome }}
+{% endblock %}
+{% block body %}
+    <section id="main">
+        <div class="box" id="map">
+            <header>
+                <h1>Mapa de Ocorrências - {{ bairro.nome }}</h1>
+            </header>
+            <div id="canvas" class="nhood-detail"></div>
+        </div>
+        <div class="box txt">
+            <h1>Comparação ano a ano</h1>
+
+            <table class="comparison">
+                <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>{{ ano_atual }}</th>
+                    <th>{{ ano_anterior }}</th>
+                    <th>+/-</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for key,item in comparacao_ano.items %}
+                    <tr>
+                        <th>
+                            <a href="/delito/{{ key }}">{{ item.nome }}</a>
+                        </th>
+                        <td>{{ item.corrente }}</td>
+                        <td>{{ item.anterior }}</td>
+                        <td> {% if item.diferenca > 0 %}
+
+                            <span class="rise glyph">{</span>
+                            <span class="rise percent">
+                            {% else %}
+                            {% if item.diferenca < 0 %}
+
+                                <span class="fall glyph">}</span>
+                                <span class="fall percent">
+                            {% else %}
+                                <span class=" glyph">_</span>
+                                <span class=" percent">
+                            {% endif %}
+                        {% endif %}
+                            {{ item.diferenca }}%</span></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </section>
+
+    <aside id="sbar">
+        <div class="box txt">
+            <h1>
+                <!--  <%=h @neighborhood.name %><g:plusone size="small"></g:plusone>  -->
+                {{ bairro.nome }}
+            </h1>
+
+            <div id="total">
+                <div class="year">
+                    <span class="num1">{{ soma_atual}}</span>
+                    <span class="label">Total de {{ ano_atual }} </span>
+                </div>
+                <div class="year">
+                    <span class="num1">{{ soma_anterior }}</span>
+                    <span class="label">Total de {{ano_anterior  }}</span>
+                </div>
+            </div>
+            <div>
+                <table class="comparison">
+                    <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>{{ ano_atual }}</th>
+                        <th>{{ ano_anterior }}</th>
+                        <th>+/-</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for key,item in comparacao_natureza.items %}
+                        <tr>
+                            <th>
+                                 {{ item.nome }} 
+                            </th>
+                            <td>{{ item.corrente }}</td>
+                            <td>{{ item.anterior }}</td>
+                            <td> {% if item.diferenca > 0 %}
+                                <span class="rise glyph">{</span> 
+                                <span class="rise percent">
+                                {% else %}
+                                {% if item.diferenca < 0 %}
+                                    <span class="fall glyph">}</span> 
+                                    <span class="fall percent">
+                                {% else %}
+                                    <span class=" percent">
+                                {% endif %}
+                            {% endif %}
+                                {{ item.diferenca }}%</span></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+               
+            </div>
+        </div>
+        <div class="box txt">
+            <h1>Últimas Ocorrências</h1>
+            <ol class="crime-list">
+                {% for ocor in ultimas %}
+                <li class={% if ocor.eh_luz_do_dia %}"day"{% else %}"night"{% endif%}>
+
+                    <h3 >
+                        {{ ocor.tipo.nome_para_listagem }}
+
+                    </h3>
+
+                    <p>  <span class="date">{{ ocor.data_formatada }} </span>{{ ocor.local.logradouro.nome }},{{ ocor.local.numero }}</p>
+                </li>
+                {% endfor %}
+            </ol>
+        </div>
+    </aside>
+
+{% endblock %}

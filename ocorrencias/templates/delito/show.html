@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block selectedHome %} selected{% endblock %}
+{% block title %} {{ tipo.nome_para_listagem }} | {% endblock %}
+{% block body %}
+<section id="main" data-permalink="{{ tipo.codigo }}">
+  <div class="box" id="map">
+    <header>
+      <h1>Crime Map</h1>
+      <!--<%= link_to 'Locate', nil, :class => 'locate' %>-->
+    </header>
+    <div id="canvas"></div>
+  </div>
+  
+  <div class="box" id="history">
+    <header>
+      <h1>Histórico de {{ tipo.nome_para_listagem }}</h1>
+    </header>
+    <div id="history-canvas"></div>
+  </div>
+</section>
+
+<aside id="sbar">
+  <div class="box txt">
+    <h1>
+      {{ tipo.nome_para_listagem }} 
+    </h1>
+    <!--<p><%= @offense.desc %></p>-->
+    <div id="pulse2"></div>
+    <div class="trend-grid">
+      <ul class="times">
+        <li class="day" title="Dia: 5:00-18:00">
+          <span class="num">{{ dados.qtOcorrenciasDiurnas }}</span>
+          <span class="percent">{{  dados.PercentualOcorrenciasDiurnas }}%</span>
+        </li>
+        <li class="night" title="Noite: 18:00-5:00">
+          <span class="num">{{ dados.qtOcorrenciasNoturnas }}</span>
+          <span class="percent">{{ dados.PercentualOcorrenciasNoturnas }}%</span>
+        </li>
+        <li class="nightlife" title="Vida noturna no fim de semana: Fri, Sat 8pm-2am">
+          <span class="num">{{ dados.qtOcorrenciasFimDeSemana }}</span>
+          <span class="percent">{{ dados.PercentualOcorrenciasFimDeSemana }}%</span>
+        </li>
+      </ul>
+    </div>
+    <div id="total">
+      <span class="num"></span>
+      <span class="label">Total</span>
+    </div>
+    <ul class="props">
+      <li id="dagerange">
+        <strong>Período:</strong>
+        <span class="val">{{ periodo }}</span>
+      </li>
+      <li id="lastreport">
+        <strong>Última ocorrência:</strong>
+        <span class="val">{{ ultima_ocorrencia }}</span>
+      </li>
+      <li id="topneighborhoods">
+        <strong>Bairros com ocorrências recorrentes:</strong>
+        <ul class="val proplist"></ul>
+          {% for bairro in bairrosRecorrentes %}
+              <li><a href="/bairro/{{ bairro.id }}">{{ bairro.nome }}</a>   <span class=count>{{ bairro.total }}</span></li>
+          {% endfor %}
+      </li>
+    </ul>
+  </div>
+</aside>
+
+{% endblock %}

@@ -1,11 +1,12 @@
+# -*- coding: utf-8 -*-
 import os
-import sys
+import databaseconf
 
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 APP_HOME = os.path.abspath(os.path.dirname(__file__))
-
+NAME = 'mapadeocorrencias'
 
 ADMINS = (
 # ('Your Name', 'your_email@example.com'),
@@ -13,16 +14,25 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '5432',                      # Set to empty string for default. Not used with sqlite3.
+#crie um arquivo databaseconf.py copiando para dentro
+#dele unicamente a variavel abaixo.
+#renomeie para MEUDATABASE e a key 'template' mude para 'default'
+#acrescente os demais dados para o seu banco de dados.
+#o arquivo databaseconf.py está no .gitignore,
+# então você nunca irá commitar por acidente seus dados de conexão
+
+TEMPLATE = {
+    'template': {
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'mapadeocorrencias',
+        'USER': 'root',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
+
+DATABASES = databaseconf.MEUDATABASE
 
 
 # Local time zone for this installation. Choices can be found here:
@@ -74,8 +84,8 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    os.path.join(APP_HOME, 'static') ,
-    os.path.join(APP_HOME, 'ocorrencias/static') ,
+    os.path.join(APP_HOME, 'static'),
+    os.path.join(APP_HOME, 'ocorrencias/static'),
     )
 
 # List of finder classes that know how to find static files in
@@ -104,7 +114,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     )
 
-ROOT_URLCONF = 'mapadecorrencias.urls'
+ROOT_URLCONF = 'mapadeocorrencias.urls'
 
 TEMPLATE_DIRS = (
     APP_HOME + "/templates",

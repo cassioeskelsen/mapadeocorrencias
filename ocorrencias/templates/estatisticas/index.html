@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block selectedTrends %} selected{% endblock %}
+{% block body %}
+
+<div class="box" id="year-counts">
+    <header>
+      <h1 id="trend-hdr">Estatística Semanal</h1>
+      <ul class="segments">
+        <li><a href="#weekly" title="Estatísticas Semanais">Semanal</a></li><li><a href="#monthly" title="Estatísticas Mensais">Mensal</a></li>
+      </ul>
+    </header>
+    <div id="trends">
+      <!-- weekly -->
+      <div class="pane"><div id="weekly"></div></div>
+      <!-- /weekly -->
+
+      <!-- montly -->
+      <div class="pane"><div id="monthly"></div></div>
+      <!-- /montly -->
+    </div>
+  </div>
+  <!-- legend -->
+  <div id="legend">
+    <h2>Legenda:</h2>
+    <ul class="times">
+      <li class="day"><span class="lbl"><strong>Dia</strong> / 05:00-18:00</span></li>
+      <li class="night"><span class="lbl"><strong>Noite</strong> / 18:00-05:00</span></li>
+      <li class="nightlife"><span class="lbl"><strong>Fim de Semana</strong> / Sex, Sab 20:00-02:00</span></li>
+    </ul>
+    <span class="range">{{ periodo }}</span>
+  </div>
+  <!-- /legend -->
+
+  <section class="boxgroup">
+    {% for tipo in estatisticaOcorrencias %} 
+      <div class="txt box summary">
+        <h2>
+          {{   tipo.nome_ocorrencia }}
+          <span class="total">{{ tipo.qtTotalOcorrencias  }}</span>
+        </h2>
+        <div class="summary-content">
+          <ul class="times">
+            <li class="day">
+              <span class="num">{{ tipo.qtOcorrenciasDiurnas }}</span> /
+              <span class="percent">{{  tipo.PercentualOcorrenciasDiurnas }}%</span>
+            </li>
+            <li class="night">
+              <span class="num">{{ tipo.qtOcorrenciasNoturnas }}</span> /
+              <span class="percent">{{ tipo.PercentualOcorrenciasNoturnas }}%</span>
+            </li>
+            <li class="nightlife">
+              <span class="num">{{ tipo.qtOcorrenciasFimDeSemana }}</span> /
+              <span class="percent">{{ tipo.PercentualOcorrenciasFimDeSemana }}%</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    {% endfor %}
+
+ </section>
+  {% endblock %}

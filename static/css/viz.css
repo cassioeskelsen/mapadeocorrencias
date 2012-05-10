@@ -1,0 +1,35 @@
+svg text {
+  font-size: 10px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  fill: #444;
+}
+
+svg .hide {
+  display: none;
+}
+
+line {
+  stroke: rgb(100,100,100);
+  stroke-opacity: 0.1;
+  shape-rendering: crispEdges;
+  stroke-width: 1px;
+}
+
+line.axis {
+  stroke: rgba(100,100,100,0.3);
+}
+
+.legend {
+  font-weight: bold;
+}
+
+.path {
+  stroke: #00aff2;
+  stroke-width: 2px;
+  fill: none;
+  stroke-opacity: 1;
+}
+
+circle.dot.max {
+  fill: rgba(153,0,0,1);
+}

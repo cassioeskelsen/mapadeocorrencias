@@ -1,0 +1,133 @@
+{% load static %}{% get_static_prefix as STATIC_URL %}<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %} Mapa de Ocorrências </title>
+    <meta name="keywords" content="<%= @keywords %>crime violência segurança indicacores"/>
+    <meta name="description" content="Mostra estatísticas de ocorrências policiais"/>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+    {% block head %}
+    {% endblock %}
+ <!--[if lt IE 8]>
+    <script type="text/javascript"
+     src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+
+    <style>
+     .chromeFrameInstallDefaultStyle {
+       width: 100%; /* default is 800px */
+       border: 5px solid blue;
+     }
+    </style>
+
+    <div id="prompt">
+    </div>
+
+<script>
+    // The conditional ensures that this code will only execute in IE,
+    // Therefore we can use the IE-specific attachEvent without worry
+    window.attachEvent("onload", function() {
+        CFInstall.check({
+            mode: "inline", // the default
+            node: "prompt"
+        });
+    });
+</script>
+<![endif]-->
+
+
+    <script src="{{ STATIC_URL }}js/vendor/jquery.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}js/vendor/jquery.easing.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}js/vendor/jquery.tipsy.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}js/lib/jquery.svg.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}js/lib/timeofday.js" type="text/javascript"></script>
+    <script src="http://cdn.jquerytools.org/1.2.5/all/jquery.tools.min.js"></script>
+    <script src="{{ STATIC_URL }}js/vendor/polymaps.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}js/vendor/rails.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}js/vendor/date.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}js/vendor/d3/d3.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}js/vendor/d3/d3.behavior.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}js/vendor/d3/d3.csv.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}js/vendor/d3/d3.geo.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}js/vendor/d3/d3.geom.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}js/vendor/d3/d3.layout.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}js/vendor/d3/d3.time.js" type="text/javascript"></script>
+
+    <script src="{{ STATIC_URL }}js/vendor/openlayers/lib/OpenLayers.js" type="text/javascript"></script>
+
+    <script src="{{ STATIC_URL }}js/map.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}js/maptip.js" type="text/javascript"></script>
+
+    <script src="{{ STATIC_URL }}js/d3.stdlib.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}js/minimap.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}js/bairros.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}js/ocorrencia.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}js/tendencias.js" type="text/javascript"></script>
+
+ <script src="{{ STATIC_URL }}js/application.js" type="text/javascript"></script>
+
+    <link href="{{ STATIC_URL }}css/reset.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="{{ STATIC_URL }}css/core.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="{{ STATIC_URL }}css/data.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="{{ STATIC_URL }}css/fonte.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="{{ STATIC_URL }}css/maptip.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="{{ STATIC_URL }}css/viz.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="{{ STATIC_URL }}css/vendor/tipsy.css" media="screen" rel="stylesheet" type="text/css"/>
+
+
+
+
+    <script type="text/javascript" charset="utf-8">
+ 
+
+    var _gaq = _gaq || [];
+        {% block page_js %}
+        {% endblock %}
+    </script>
+
+
+</head>
+<body data-path="{{ data_path }}">
+<header id="top">
+    <div class="wrap">
+        <div class="wrap-inner">
+            <h1 id="logo"><img src="{{ STATIC_URL }}images/logo.png" alt="SIG Segurança Jaraguá do Sul"/></h1>
+
+            <div id="subbar">
+                <nav id="primary">
+                    <ul>
+                        <li class="home{% block selectedHome %}{% endblock %}"><span>@</span><a href="/">Ocorrências</a>
+                        </li>
+                        <li class="trends{% block selectedTrends %}{% endblock %}"><span>Y</span><a href="/estatisticas">Estatísticas</a>
+                        </li>
+                        <li class="about{% block selectedBairro %}{% endblock %}"> <span>H</span><a href="/bairros">Bairros</a>
+                        </li>
+                        <li class="about{% block selectedSobre %}{% endblock %}"> <span>i</span><a href="/">Sobre</a>
+                        </li>
+                    </ul>
+                </nav>
+                <!--<% if @last_import %><span class="last-import">Data Updated <%= @last_import.created_at.strftime('%A, %B %d %-I:%M %p') %></span><%
+                end %>-->
+            </div>
+        </div>
+    </div>
+</header>
+
+<section id="content">
+    <div class="wrap">
+        <div class="wrap-inner">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="wrap">
+        <div class="wrap-inner">
+            <div class="box">Copyright &copy; 2011 <a href="http://www.3geo.com.br">3Geo LTDA</a><a
+                    href="http://www.portlandcrime.com"> - Baseado em Portland Crime</a></div>
+        </div>
+    </div>
+</footer>
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+</body>
+</html>

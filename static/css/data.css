@@ -1,0 +1,254 @@
+/*------------------------------------------------------------------------------------
+  @group svg
+------------------------------------------------------------------------------------*/
+#map text {
+  fill: #fff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+}
+
+.c {
+  shape-rendering: auto;
+}
+
+
+/* @end */
+.grid {
+  stroke: #333;
+  stroke-opacity: .4;
+  shape-rendering: crispedges;
+}
+
+.compass {
+  z-index: 999999;
+}
+
+.compass .back {
+  fill: #20252a;
+  fill-opacity: 0.6;
+}
+
+.compass .fore {
+  stroke: none;
+  stroke-width: 0;
+}
+
+.park {
+  stroke: #333;
+  stroke-opacity: 0.5;
+  stroke-width: 1px;
+  fill-opacity: 0.2;
+  fill: #ccc;
+}
+
+/*.compass rect.back.fore {
+  fill: #fff;
+  fill-opacity: .3;
+  stroke: #eee;
+  stroke-width: 1px;
+  shape-rendering: crispEdges;
+}*/
+
+.compass .direction {
+  fill: #333;
+  fill-opacity: 0.4;
+}
+
+.compass .chevron {
+  stroke: #fff;
+  stroke-opacity: 0.5;
+  stroke-width: 0;
+}
+
+.compass .zoom .chevron {
+  stroke-width: 4px;
+  stroke: #fff;
+}
+
+.compass .chevron.active {
+  
+}
+
+.compass.active .active .direction {
+  fill: #999;
+}
+
+text {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  cursor: default;
+}
+
+.area {
+  fill: #00aff2;
+  fill-opacity: 0.2;
+}
+
+.apath {
+    stroke: #00aff2;
+    stroke-width: 2px;
+    fill: none;
+    stroke-opacity: 0.4;
+}
+
+.point {
+  fill: #00aff2;
+  
+}
+
+/*------------------------------------------------------------------------------------
+  @group crime types
+------------------------------------------------------------------------------------*/
+.circle {
+  fill: #00d4ff;
+  fill-opacity: .8;
+  stroke: #444;
+  stroke-width: 1.5px;
+}
+
+.circle.homicide {
+  file: #333;
+  stroke: #111;
+}
+
+.circle.ra,
+.circle.lc,
+.circle.hm,
+.circle.rc,
+.circle.ro,
+.circle.rt,
+.circle.vf,
+    .circle.th,
+    .circle.rg,
+    .circle.ru,
+    .circle.rr,
+    .circle.rn,
+    .circle.rx,
+    .circle.ap,
+    .circle.se,
+ .circle.rp,
+.circle.vf {
+  fill: #d7141b;
+  stroke: #a71015;
+}
+
+
+.circle.dd,
+.circle.jb,
+.circle.av,
+.circle.vd,
+.circle.df,
+.circle.fc,
+.circle.fr,
+.circle.ft,
+.circle.fv,
+    .circle.ps,
+.circle.pa {
+  fill: #366fd7;
+  stroke: #264e96;
+}
+
+.circle.pt,
+.circle.ut, {
+  fill: #51d749;
+  stroke: #3fa738;
+}
+
+
+.circle.ja {
+  fill: #ef6917;
+  stroke: #b64f11;
+}
+
+.circle.su,
+.circle.te,
+.circle.es {
+  fill: #ea0caa;
+  stroke: #b30982;
+}
+
+/*.circle:hover {
+  fill-opacity: 1;
+}*/
+
+g.inactive circle, g.inactive text {
+  fill-opacity: 0;
+  stroke-opacity: 0;
+  z-index: -9999999;
+}
+
+.tm.d {
+  fill: #fff;
+  fill-opacity: 0.8;
+}
+
+.tm.n {
+  fill: #000;
+  fill-opacity: 0.6;
+}
+
+/* @end */
+
+/*------------------------------------------------------------------------------------
+  @group neighborhoods
+------------------------------------------------------------------------------------*/
+
+.layer .nhood {
+/*  fill: #2ea500;
+  fill-opacity: 0.2;
+  stroke: #247e00;
+  stroke-width: 1;*/
+  fill:  #ff9100;
+  stroke: #d27800;
+  fill-opacity: 0.2;
+}
+
+.layer .nhood.over {
+  fill: #009dff;
+  fill-opacity: 0.5;
+  stroke: #0080d0;
+}
+
+.nhood-detail .layer .nhood {
+  stroke-dasharray: 3 3;
+  stroke: #355ee6;
+  fill-opacity: 0;
+  stroke-width: 3;
+}
+
+/* @end */
+
+/*------------------------------------------------------------------------------------
+  @group stops
+------------------------------------------------------------------------------------*/
+
+.max-stop {
+  fill: #e6b442;
+  stroke: #e7c26e;
+  stroke-width: 1;
+  fill-opacity: 0.6;
+}
+
+.sc-stop,
+.bsc-stop {
+  fill: #8e62cf;
+  stroke: #aa89db;
+  stroke-width: 1;
+  fill-opacity: 0.6;
+}
+
+.max-route,
+.street-car-route {
+  fill: none;
+  stroke: #555;
+  stroke-width: 2;
+}
+
+.max-route,
+.street-car-route {
+  stroke: #000;
+  stroke-opacity: 0.5;
+  stroke-dasharray: 10 2;
+}
+
+/* @end */
