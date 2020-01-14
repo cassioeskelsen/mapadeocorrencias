@@ -2,7 +2,7 @@
 
 Mapa de Ocorrências Policiais com estatísticas por bairro, por tipo de crime, etc.
 
-<img src=https://img.skitch.com/20120510-tuacmmpnt8jx95hr6q8y469m21.jpg width=450>
+<img src=https://static.wixstatic.com/media/804ee2_0f3230905298408aa6c24eddbe11f850~mv2.png width=450>
 
 
 Este projeto não é do tipo "crowdsourcing" de dados e sim para visualização de dados vindos dos órgãos de segurança.
